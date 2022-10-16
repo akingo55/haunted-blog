@@ -4,6 +4,7 @@ class Blog < ApplicationRecord
   belongs_to :user
   has_many :likings, dependent: :destroy
   has_many :liking_users, class_name: 'User', source: :user, through: :likings
+  before_save :ensure_premium_user
 
   validates :title, :content, presence: true
 
@@ -18,5 +19,9 @@ class Blog < ApplicationRecord
 
   def owned_by?(target_user)
     user == target_user
+  end
+
+  def ensure_premium_user
+    self.random_eyecatch = false unless user.premium
   end
 end
