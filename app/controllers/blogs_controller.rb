@@ -9,16 +9,21 @@ class BlogsController < ApplicationController
     @blogs = Blog.search(params[:term]).published.default_order
   end
 
-  def show; end
+  def show
+    raise ActiveRecord::RecordNotFound if (current_user.nil? || !@blog.owned_by?(current_user)) && @blog.secret
+  end
 
   def new
     @blog = Blog.new
   end
 
-  def edit; end
+  def edit
+    raise ActiveRecord::RecordNotFound unless @blog.owned_by?(current_user)
+  end
 
   def create
     @blog = current_user.blogs.new(blog_params)
+    raise ActiveRecord::RecordNotFound unless @blog.owned_by?(current_user)
 
     if @blog.save
       redirect_to blog_url(@blog), notice: 'Blog was successfully created.'
@@ -28,6 +33,8 @@ class BlogsController < ApplicationController
   end
 
   def update
+    raise ActiveRecord::RecordNotFound unless @blog.owned_by?(current_user)
+
     if @blog.update(blog_params)
       redirect_to blog_url(@blog), notice: 'Blog was successfully updated.'
     else
@@ -36,6 +43,8 @@ class BlogsController < ApplicationController
   end
 
   def destroy
+    raise ActiveRecord::RecordNotFound unless @blog.owned_by?(current_user)
+
     @blog.destroy!
 
     redirect_to blogs_url, notice: 'Blog was successfully destroyed.', status: :see_other
