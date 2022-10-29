@@ -21,7 +21,7 @@ class BlogsController < ApplicationController
   def edit; end
 
   def create
-    @blog = current_user.blogs.new(blog_params)
+    @blog = current_user.blogs.new(update_params(blog_params))
 
     if @blog.save
       redirect_to blog_url(@blog), notice: 'Blog was successfully created.'
@@ -31,7 +31,7 @@ class BlogsController < ApplicationController
   end
 
   def update
-    if @blog.update(blog_params)
+    if @blog.update(update_params(blog_params))
       redirect_to blog_url(@blog), notice: 'Blog was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
@@ -52,6 +52,12 @@ class BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(:title, :content, :secret, :random_eyecatch)
+  end
+
+  def update_params(params)
+    new_params = params
+    new_params[:random_eyecatch] = false unless current_user.premium
+    new_params
   end
 
   def not_owner?
