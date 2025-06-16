@@ -74,3 +74,7 @@ end
 
 gem 'devise'
 gem 'devise-i18n'
+
+# 1.3.5以上はerblintでエラーが発生するので1.3.4を指定
+# https://bootcamp.fjord.jp/questions/2036
+gem 'concurrent-ruby', '1.3.4'
