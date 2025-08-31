@@ -103,9 +103,6 @@ GEM
     connection_pool (2.5.3)
     crass (1.0.6)
     date (3.4.1)
-    debug (1.11.0)
-      irb (~> 1.10)
-      reline (>= 0.3.8)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -332,7 +329,6 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
-  debug
   devise
   devise-i18n
   erb_lint
@@ -356,4 +352,4 @@ RUBY VERSION
    ruby 3.4.5p51
 
 BUNDLED WITH
-   2.4.18
+   2.7.0
