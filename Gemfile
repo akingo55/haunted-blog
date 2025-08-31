@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.6'
+gem 'rails', '8.0.2.1'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -57,9 +57,7 @@ end
 
 group :development do
   gem 'erb_lint', require: false
-  # 以下のPRがリリースされたら最新のrubocopを使うようにする
-  # https://github.com/fjordllc/rubocop-fjord/pull/16
-  gem 'rubocop', '~> 1.45.1', require: false
+  gem 'rubocop', require: false
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
@@ -74,7 +72,3 @@ end
 
 gem 'devise'
 gem 'devise-i18n'
-
-# 1.3.5以上はerblintでエラーが発生するので1.3.4を指定
-# https://bootcamp.fjord.jp/questions/2036
-gem 'concurrent-ruby', '1.3.4'
