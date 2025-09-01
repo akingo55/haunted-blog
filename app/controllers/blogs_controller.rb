@@ -48,6 +48,6 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :content, :secret, :random_eyecatch)
+    params.expect(blog: %i[title content secret random_eyecatch])
   end
 end
