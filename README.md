@@ -20,11 +20,11 @@ $ git clone https://github.com/自分のアカウント名/haunted-blog.git
 
 4. `cd haunted-blog` でカレントディレクトリを変更してください。
 5. `.ruby-version` に書かれたバージョンのRubyがインストールされていなければインストールしてください。
-6. mainブランチから提出用ブランチをを作成してください。（ `git checkout -b fix-vulnerability` ）
+6. mainブランチから提出用ブランチを作成してください。（ `git checkout -b fix-vulnerability` ）
 7. `bin/setup`コマンドで環境セットアップを実行してください。
-8. `bin/rails s` して動作確認し、スタート地点のアプリケーション仕様を把握してください。
+8. `bin/dev` して動作確認し、スタート地点のアプリケーション仕様を把握してください。
 9. http://localhost:3000/ にアクセスしてブログ一覧が表示されることを確認してください。
-10. ログインする場合は以下のいずれかのログイン情報を使ってください。パスワードはいずれも "password" です。
+10. ログインする場合は以下のいずれかのログイン情報を使ってください。パスワードはいずれも "p@ssw0rd" です。
     - alice@example.com (premiumユーザー)
     - bob@example.com （通常ユーザー)
     - carol@example.com (通常ユーザー)
@@ -39,4 +39,3 @@ $ git clone https://github.com/自分のアカウント名/haunted-blog.git
     - OK `自分のアカウント名/main` ← `自分のアカウント名/fix-vulnerability`
     - NG `fjordllc/main` ← `自分のアカウント名/fix-vulnerability`
 17. 合格したら上記Pull Requestをマージしてください。
-
